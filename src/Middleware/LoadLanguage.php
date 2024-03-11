@@ -16,8 +16,8 @@ class LoadLanguage
             ->first();
 
         $request->attributes->add([
-            'locale' => $lang->locale,
-            'language_id' => $lang->id
+            'locale' => $lang?->locale ?? 'en,
+            'language_id' => $lang?->id
         ]);
 
         return $next($request);
