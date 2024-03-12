@@ -19,7 +19,7 @@
 
         <div class="card m-4" style="">
             <div class="card-body">
-                <h5 class='card-title'><a class="a-link-cart-color" href='{{$post->url(app('request')->get('locale'))}}'>{{$post->title}}</a></h5>
+                <h5 class='card-title'> @if(Route::has('binshopsblog.single')) <a class="a-link-cart-color" href='{{$post->url(app('request')->get('locale'))}}'>{{$post->title}}</a> @else {{$post->title}} @endif</h5>
                 <h5 class='card-subtitle mb-2 text-muted'>{{$post->subtitle}}</h5>
                 <p class="card-text">{{$post->html}}</p>
 
