@@ -3,27 +3,30 @@
 Route::group(['middleware' => ['web'], 'namespace' => '\BinshopsBlog\Controllers'], function () {
 
     /** The main public facing blog routes - show all posts, view a category, view a single post, also the add comment route */
-    Route::group(['prefix' => "/{locale}/".config('binshopsblog.blog_prefix', 'blog')], function () {
 
-        Route::get('/', 'BinshopsReaderController@index')
-            ->name('binshopsblog.index');
+    if(config('binshopsblog.include_blog_routes', true)) {
+        Route::group(['prefix' => "/{locale}/".config('binshopsblog.blog_prefix', 'blog')], function () {
 
-        Route::get('/search', 'BinshopsReaderController@search')
-            ->name('binshopsblog.search');
+            Route::get('/', 'BinshopsReaderController@index')
+                ->name('binshopsblog.index');
 
-        Route::get('/category{subcategories}', 'BinshopsReaderController@view_category')->where('subcategories', '^[a-zA-Z0-9-_\/]+$')->name('binshopsblog.view_category');
+            Route::get('/search', 'BinshopsReaderController@search')
+                ->name('binshopsblog.search');
 
-        Route::get('/{blogPostSlug}',
-            'BinshopsReaderController@viewSinglePost')
-            ->name('binshopsblog.single');
+            Route::get('/category{subcategories}', 'BinshopsReaderController@view_category')->where('subcategories', '^[a-zA-Z0-9-_\/]+$')->name('binshopsblog.view_category');
 
-        // throttle to a max of 10 attempts in 3 minutes:
-        Route::group(['middleware' => 'throttle:10,3'], function () {
-            Route::post('save_comment/{blogPostSlug}',
-                'BinshopsCommentWriterController@addNewComment')
-                ->name('binshopsblog.comments.add_new_comment');
+            Route::get('/{blogPostSlug}',
+                'BinshopsReaderController@viewSinglePost')
+                ->name('binshopsblog.single');
+
+            // throttle to a max of 10 attempts in 3 minutes:
+            Route::group(['middleware' => 'throttle:10,3'], function () {
+                Route::post('save_comment/{blogPostSlug}',
+                    'BinshopsCommentWriterController@addNewComment')
+                    ->name('binshopsblog.comments.add_new_comment');
+            });
         });
-    });
+    }
 
     Route::group(['prefix' => config('binshopsblog.blog_prefix', 'blog')], function () {
 
