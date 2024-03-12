@@ -85,9 +85,11 @@
                 @endif
 
 
-                <a href="{{$post->url(app('request')->get('locale'))}}" class="card-link btn btn-outline-secondary"><i class="fa fa-file-text-o"
-                                                                                                                       aria-hidden="true"></i>
+                @if(Route::has('binshopsblog.single'))
+                    <a href="{{$post->url(app('request')->get('locale'))}}" class="card-link btn btn-outline-secondary">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
                     View Post</a>
+                @endif
                 <a href="{{$post->edit_url()}}" class="card-link btn btn-primary">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     Edit Post</a>
