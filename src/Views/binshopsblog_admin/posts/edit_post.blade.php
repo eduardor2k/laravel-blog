@@ -3,7 +3,7 @@
 
 
     <h5>Admin - Editing post
-        @if($post_translation->slug)
+        @if($post_translation->slug && Route::has('binshopsblog.single'))
             <a target='_blank' href='{{$post_translation->url($selected_locale)}}' class='float-right btn btn-primary'>View post</a>
         @endif
     </h5>
