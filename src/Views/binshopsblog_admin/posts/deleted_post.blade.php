@@ -42,15 +42,15 @@
                     <td><code>{{$deletedPost->$image_size}}</code>
 
             {{--check filesize returns something, so we don't divide by 0--}}
-                        @if(filesize(public_path(config("binshopsblog.blog_upload_dir","blog_images")."/".$deletedPost->$image_size)))
+                        @if(filesize(storage_path(config("binshopsblog.blog_upload_dir","blog_images")."/".$deletedPost->$image_size)))
 
-                        ({{ (round(filesize(public_path(config("binshopsblog.blog_upload_dir","blog_images")."/".$deletedPost->$image_size)) / 1000 ,1)). " kb"}})
+                        ({{ (round(filesize(storage_path(config("binshopsblog.blog_upload_dir","blog_images")."/".$deletedPost->$image_size)) / 1000 ,1)). " kb"}})
 
                         @endif
 
                     </td>
                     <td><code>
-                            <small>{{ public_path(config("binshopsblog.blog_upload_dir","blog_images")."/".$deletedPost->$image_size) }}</small>
+                            <small>{{ storage_path(config("binshopsblog.blog_upload_dir","blog_images")."/".$deletedPost->$image_size) }}</small>
                         </code></td>
                 </tr>
 

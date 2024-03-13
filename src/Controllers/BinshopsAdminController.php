@@ -357,7 +357,7 @@ class BinshopsAdminController extends Controller
             ['lang_id', '=', $lang_id]
         ])->firstOrFail();
 
-        $path = public_path('/' . config("binshopsblog.blog_upload_dir"));
+        $path = storage_path('/' . config("binshopsblog.blog_upload_dir"));
         if (!$this->checked_blog_image_dir_is_writable) {
             if (!is_writable($path)) {
                 throw new \RuntimeException("Image destination path is not writable ($path)");

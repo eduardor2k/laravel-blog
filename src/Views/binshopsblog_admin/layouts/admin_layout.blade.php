@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito" crossorigin="anonymous">
 
     <!-- Styles -->
-    {{--    @if(file_exists(public_path("binshopsblog_admin_css.css")))--}}
+    {{--    @if(file_exists(storage_path("binshopsblog_admin_css.css")))--}}
     <link href="{{ asset('binshopsblog_admin_css.css') }}" rel="stylesheet">
     {{--    @else--}}
     {{--        <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
