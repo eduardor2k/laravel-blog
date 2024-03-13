@@ -7,6 +7,7 @@ use BinshopsBlog\Events\UploadedImage;
 use BinshopsBlog\Models\BinshopsPost;
 use File;
 use BinshopsBlog\Models\BinshopsPostTranslation;
+use Intervention\Image\Laravel\Facades\Image;
 
 trait UploadFileTrait
 {
@@ -98,7 +99,7 @@ trait UploadFileTrait
         $destinationPath = $this->image_destination_path();
 
         // make image
-        $resizedImage = \Image::make($photo->getRealPath());
+        $resizedImage = \Image::read(($photo->getRealPath());
 
 
         if (is_array($image_size_details)) {
