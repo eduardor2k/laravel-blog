@@ -99,7 +99,7 @@ trait UploadFileTrait
         $destinationPath = $this->image_destination_path();
 
         // make image
-        $resizedImage = \Image::read(($photo->getRealPath());
+        $resizedImage = \Image::read($photo->getRealPath());
 
 
         if (is_array($image_size_details)) {
